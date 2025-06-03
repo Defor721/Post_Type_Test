@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { UserRole } from '../enums/user-role.enum';
 
 @Entity()
 export class User {
@@ -19,6 +20,9 @@ export class User {
 
   @Column()
   password: string;
+
+  @Column({ type: 'enum', enum: UserRole })
+  role: UserRole;
 
   @CreateDateColumn() // 자동 타임스탬프
   createdAt: Date;
